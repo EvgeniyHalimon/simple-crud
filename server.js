@@ -5,6 +5,14 @@ const db = require('./api')
 
 const PORT = 3000
 
+app.use(bodyParser.json())
+
+app.use(
+    bodyParser.urlencoded({
+        extended: true,
+    })
+)
+
 app.listen(PORT, (error) => {
     error ? console.log(error) : console.log(`listening port ${PORT}`)
 })
@@ -20,10 +28,3 @@ app.put('/users/:id', db.updateUser)
 app.delete('/users/:id', db.deleteUser)
 
 
-
-app.use(bodyParser.json())
-app.use(
-    bodyParser.urlencoded({
-        extended: true,
-    })
-)
